@@ -1,0 +1,16 @@
+# file: SVMmod.txt
+# author: Jason Morse
+# date: March 1, 2013
+#
+
+RAM = [M, N]
+
+
+1:  LOD  R1, 0          # Loads M into R1     
+2:  LOD  R2, 1          # Loads N into R2
+3:  CMP  R1, R2         # Sets PSW to R1-R2                             
+4:  BLT  3              # Checks if R1 < R2
+5:  SUB  R1, R1, R2     # Subtracts N from M
+6:  JMP  -3             # Repeats the subtraction process until 0 is reached
+7:  LOD  R0, R1         # Puts remainder in R0
+8:  HLT                 # Stops the SVM

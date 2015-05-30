@@ -1,0 +1,22 @@
+# file: SVMfact.txt
+# author: Jason Morse
+# date: March 1, 2013
+#
+
+# NOT COMPLETE
+
+RAM = [M, M-1, 0, 1]
+
+1:  LOD  R1, 0          # Loads M into R1
+2:  LOD  R0, 2          # Loads 0 into R0
+3:  LOD  R3, 3          # Loads 1 into R3
+4:  SUB  R2, R1, R3     # Subtracts 1 from M and puts value in R2
+5:  CPZ  R2             # Checks if M-1 is 0; if so, done
+6:  BEQ  4        
+7:  ADD  R0, R0, R1     #
+8:  SUB  R2, R2, R3     # ^ Carry out multiplication
+
+# Need to store the content in R0 somewhere else so that it can be called back to be multiplied to the next number (-1)
+
+9:  JMP -*              # Repeat multiplication process
+10: HLT                 # Stops the SVM
